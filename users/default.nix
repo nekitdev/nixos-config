@@ -1,0 +1,4 @@
+{ currentUser, ... }:
+{
+  current = import ./${currentUser} { };
+}
