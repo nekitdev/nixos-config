@@ -27,7 +27,7 @@ in
 
     kernelModules = [ "kvm-intel" ];
 
-    # TODO: rtw89
+    # TODO: rtw89?
   };
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

@@ -1,10 +1,10 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 let
   packages = pkgs.linuxPackages_latest;
 
   # kernel = packages.kernel
 
-  # rtw89-nix = pkgs.callPackage ../../derivations/rtw89.nix {
+  # rtw89-nix = pkgs.callPackage ../../pkgs/rtw89.nix {
   #   inherit kernel;
   # }
 in

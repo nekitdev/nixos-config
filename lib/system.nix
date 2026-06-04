@@ -2,6 +2,7 @@
   nixpkgs,
   nixpkgs-testing,
   overlays,
+  disko,
   home-manager,
   sops-nix,
   inputs,
@@ -12,6 +13,7 @@ let
   defaultUser = "nekit";
   defaultAllowUnfree = true;
   defaultSpecialArgs = { };
+  defaultStateVersion = "26.05";
 in
 name:
 {
@@ -21,11 +23,13 @@ name:
   user ? defaultUser,
   allowUnfree ? defaultAllowUnfree,
   specialArgs ? defaultSpecialArgs,
+  stateVersion ? defaultStateVersion,
 }:
 let
   nixosSystem = nixpkgs.lib.nixosSystem;
 
   host = ../hosts/${name};
+  core = ../modules/core;
 
   provided = import ../overlays {
     inherit nixpkgs-testing allowUnfree;
@@ -33,6 +37,8 @@ let
 
   mergedSpecialArgs = {
     inherit inputs;
+
+    inherit stateVersion;
 
     currentName = name;
     currentProfile = profile;
@@ -49,27 +55,33 @@ nixosSystem {
 
   modules = [
     # add sops
-
     sops-nix.nixosModules.sops
 
-    # apply overlays before anything else in order for them to be available globally
-    {
-      nixpkgs.overlays = overlays ++ builtins.attrValues provided;
-    }
+    # add disko
+    disko.nixosModules.disko
 
-    # allow unfree packages is desired
-    {
-      nixpkgs.config.allowUnfree = allowUnfree;
-    }
-
-    # specify the host platform
+    # add home-manager
+    home-manager.nixosModules.home-manager
 
     {
-      nixpkgs.hostPlatform = system;
+      nixpkgs = {
+        # apply overlays before anything else in order for them to be available globally
+        overlays = overlays ++ builtins.attrValues provided;
+
+        # allow unfree packages if desired
+        config.allowUnfree = allowUnfree;
+
+        # specify the host platform
+        hostPlatform = system;
+      };
     }
 
+    # host-specific configuration
     host
 
-    # TODO: profiles, user and home-manager
+    # generic configuration
+    core
+
+    # TODO: profiles
   ];
 }

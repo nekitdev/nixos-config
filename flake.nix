@@ -10,6 +10,12 @@
     # nixpkgs for testing purposes
     nixpkgs-testing.url = "github:nixos/nixpkgs";
 
+    # declarative disk management
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # home manager is used to configure non-core aspects of the system
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -39,6 +45,7 @@
     {
       nixpkgs,
       nixpkgs-testing,
+      disko,
       home-manager,
       sops-nix,
       niri,
@@ -56,6 +63,7 @@
           nixpkgs
           nixpkgs-testing
           overlays
+          disko
           home-manager
           sops-nix
           inputs
@@ -68,10 +76,10 @@
           system = "x86_64-linux";
           profile = "nvidia-laptop";
         };
-        pi = mkSystem "pi" {
-          system = "aarch64-linux";
-          profile = "pi";
-        };
+        # pi = mkSystem "pi" {
+        #   system = "aarch64-linux";
+        #   profile = "pi";
+        # };
       };
     };
 }

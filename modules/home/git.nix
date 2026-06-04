@@ -1,6 +1,8 @@
-_:
+{ currentUser, ... }:
 let
-  users = import ../../users { };
+  users = import ../../users {
+    inherit currentUser;
+  };
   info = users.current.info;
 in
 {
@@ -20,7 +22,7 @@ in
       signing = {
         format = "openpgp";
         key = info.fingerprint;
-        singByDefault = true;
+        signByDefault = true;
       };
 
       settings = {
