@@ -1,11 +1,14 @@
 {
+  # flakes
   nixpkgs,
   nixpkgs-testing,
   overlays,
   disko,
   home-manager,
   sops-nix,
+  # inputs
   inputs,
+  # library and config
   ...
 }:
 let
@@ -13,7 +16,7 @@ let
   defaultUser = "nekit";
   defaultAllowUnfree = true;
   defaultSpecialArgs = { };
-  defaultStateVersion = "26.05";
+  defaultStateVersion = "26.11";
 in
 name:
 {

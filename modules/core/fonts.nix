@@ -10,6 +10,8 @@
     material-icons
     # math
     cm_unicode
+    # google
+    google-fonts
     # nerd
     nerd-fonts.fira-code
     nerd-fonts.fira-mono

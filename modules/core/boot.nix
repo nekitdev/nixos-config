@@ -1,18 +1,12 @@
 { pkgs, ... }:
 let
-  packages = pkgs.linuxPackages_latest;
 
-  # kernel = packages.kernel
-
-  # rtw89-nix = pkgs.callPackage ../../pkgs/rtw89.nix {
-  #   inherit kernel;
-  # }
 in
 {
   boot = {
-    kernelPackages = packages;
+    kernelPackages = pkgs.linuxPackages_latest;
 
-    # extraModulePackages = [ rtw89-nix ];
+    extraModulePackages = [ pkgs.rtw89 ];
 
     loader = {
       systemd-boot.enable = true;

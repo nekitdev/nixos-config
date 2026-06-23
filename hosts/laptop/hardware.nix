@@ -25,9 +25,15 @@ in
       kernelModules = [ ];
     };
 
-    kernelModules = [ "kvm-intel" ];
+    kernelModules = [
+      "kvm-intel"
+      "rtw89_8922au_git"
+    ];
 
-    # TODO: rtw89?
+    # disable power saving mode for rtw89
+    extraModprobeConfig = ''
+      options rtw89_core disable_ps_mode=y
+    '';
   };
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

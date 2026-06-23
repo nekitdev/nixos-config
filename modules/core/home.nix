@@ -1,5 +1,7 @@
 {
   pkgs,
+  config,
+  inputs,
   currentName,
   currentProfile,
   currentSystem,
@@ -39,7 +41,12 @@ in
 
     # users
     users.${currentUser} = {
-      imports = [ ../home ];
+      imports = [
+        # niri
+        inputs.niri.homeModules.niri
+        # home
+        ../home
+      ];
 
       home = {
         username = currentUser;
@@ -63,6 +70,9 @@ in
     users.${currentUser} = {
       # normal user
       isNormalUser = true;
+
+      # do not create password files, `sops` will handle that
+      hashedPasswordFile = config.sops.secrets.password.path;
 
       # set description to full name
       description = info.name;
