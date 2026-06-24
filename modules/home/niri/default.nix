@@ -3,7 +3,7 @@
   ...
 }:
 let
-  image = ../../../wallpapers/dark.png;
+  image = ../../../wallpapers/dark.jpeg;
 in
 {
   imports = [

@@ -40,7 +40,7 @@ in
         border = text;
       };
       border = {
-        width = 10;
+        width = 4;
         radius = 10;
       };
     };

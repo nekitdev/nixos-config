@@ -7,6 +7,7 @@ _: {
     ./audio.nix
     ./boot.nix
     ./browsers.nix
+    # ./cloudflared.nix
     ./fonts.nix
     ./gpg.nix
     ./greet.nix

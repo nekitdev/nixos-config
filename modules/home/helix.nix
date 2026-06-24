@@ -22,7 +22,7 @@ _: {
       language = [
         {
           name = "typst";
-          file-names = [ "typ" ];
+          file-types = [ "typ" ];
           language-servers = [ "tinymist" ];
         }
         {

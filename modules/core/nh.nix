@@ -11,5 +11,5 @@
     flake = "/home/${currentUser}/Documents/nixos-config";
   };
 
-  environment.systemPackages = with pkgs; [ nix-output-monitor ];
+  environment.systemPackages = [ pkgs.nix-output-monitor ];
 }
