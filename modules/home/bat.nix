@@ -5,7 +5,7 @@
     config = {
       pager = "less --quit-if-one-screen";
       style = "full";
-      theme = "OneDark";
+      theme = "TwoDark";
     };
 
     extraPackages = with pkgs.bat-extras; [

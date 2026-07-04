@@ -18,7 +18,7 @@ in
         match-mode = "fzf";
         match-counter = "yes";
         width = 80;
-        lines = 20;
+        lines = 15;
         tabs = 4;
       };
       colors = {

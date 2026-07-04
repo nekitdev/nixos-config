@@ -5,8 +5,6 @@
     # primary nixpkgs channel
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # secrets.url = "github:nekitdev/secrets";
-
     # nixpkgs for testing purposes
     nixpkgs-testing.url = "github:nixos/nixpkgs";
 
@@ -30,7 +28,7 @@
 
     # niri is an amazing compositor! ~ nekit
     niri = {
-      url = "github:sodiboo/niri-flake";
+      url = "github:epireyn/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

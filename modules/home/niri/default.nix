@@ -120,6 +120,7 @@ in
             top-right = 10.0;
           };
           clip-to-geometry = true;
+          background-effect.blur = true;
         }
       ];
     };
