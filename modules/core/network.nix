@@ -30,6 +30,7 @@
       ];
       trustedInterfaces = [
         "virbr0" # virtualization
+        "wlan1" # wifi
       ];
     };
   };
