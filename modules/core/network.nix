@@ -8,6 +8,8 @@
   networking = {
     hostName = currentName;
 
+    usePredictableInterfaceNames = false;
+
     useDHCP = lib.mkDefault true;
 
     # cloudflare <3
