@@ -1,4 +1,4 @@
-_: {
+{ pkgs, ... }: {
   security = {
     rtkit.enable = true;
     polkit.enable = true;
@@ -6,6 +6,9 @@ _: {
       services = {
         swaylock.enable = true;
       };
+    };
+    sudo.package = pkgs.sudo.override {
+      withInsults = true;
     };
   };
 }

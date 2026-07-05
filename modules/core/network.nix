@@ -26,7 +26,9 @@
         443 # https
         8080 # alternative
       ];
-      trustedInterfaces = [ "virbr0" ]; # virtualization
+      trustedInterfaces = [
+        "virbr0" # virtualization
+      ];
     };
   };
 

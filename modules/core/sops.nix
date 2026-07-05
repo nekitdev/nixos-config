@@ -9,6 +9,7 @@ _: {
       password = {
         neededForUsers = true;
       };
+      wifi = { };
       cloudflared = { };
     };
   };

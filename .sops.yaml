@@ -1,8 +1,10 @@
 keys:
+  - &nekit 9997A484F1274BE3F380532F7AB07CCCF02843AE
   - &laptop 3BF299019387606E84E78954C0DEDCAAFF653054
 
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env)$
     key_groups:
       - pgp:
+          - *nekit
           - *laptop
