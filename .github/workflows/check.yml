@@ -10,7 +10,7 @@ on:
       - "**"
 
 jobs:
-  test:
+  check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,5 +21,5 @@ jobs:
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Test
+      - name: Check
         run: nix flake check
