@@ -5,6 +5,7 @@ _: {
     # the rest of modules
     ./bat.nix
     ./btop.nix
+    ./claude.nix
     ./eza.nix
     ./fastfetch.nix
     ./fd.nix

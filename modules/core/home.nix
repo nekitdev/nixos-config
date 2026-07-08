@@ -3,8 +3,8 @@
   config,
   inputs,
   currentName,
-  currentProfile,
   currentSystem,
+  currentPi,
   currentUser,
   currentAllowUnfree,
   stateVersion,
@@ -30,8 +30,8 @@ in
     extraSpecialArgs = {
       inherit
         currentName
-        currentProfile
         currentSystem
+        currentPi
         currentUser
         currentAllowUnfree
         ;

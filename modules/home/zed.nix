@@ -46,14 +46,18 @@ _: {
       icon_theme = "Colored Zed Icons Theme Dark";
 
       lsp = {
-        nix.binary.path_lookup = true;
-
         rust-analyzer = {
-          binary.path_lookup = true;
           initialization_options.check.command = "clippy";
         };
 
-        omnisharp.binary.path_lookup = true;
+        tailwindcss-language-server.settings = {
+          includeLanguages = {
+            rust = "html";
+          };
+          experimental.classRegex = [
+            "class:\\s*\"([^\"]*)\""
+          ];
+        };
       };
 
       ui_font_size = 16;

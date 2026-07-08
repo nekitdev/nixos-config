@@ -1,9 +1,12 @@
 {
   pkgs,
+  currentName,
   ...
 }:
 let
   image = ../../../wallpapers/dark.jpg;
+
+  outputs = import ../../../hosts/${currentName}/outputs.nix { };
 in
 {
   imports = [
@@ -62,29 +65,8 @@ in
         focus-follows-mouse.enable = true;
       };
 
-      outputs = {
-        "eDP-1" = {
-          mode = {
-            width = 1920;
-            height = 1080;
-          };
-          position = {
-            x = 0;
-            y = 0;
-          };
-        };
-        "DP-1" = {
-          mode = {
-            width = 2560;
-            height = 1440;
-          };
-          position = {
-            x = 1920;
-            y = 0;
-          };
-        };
-        # "HDMI-A-1" = {};
-      };
+      # simply inherit outputs
+      inherit outputs;
 
       layout = {
         gaps = 16;

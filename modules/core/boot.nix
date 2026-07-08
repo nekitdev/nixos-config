@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, currentPi, ... }:
 let
 
 in
@@ -9,7 +9,8 @@ in
     extraModulePackages = [ pkgs.rtw89 ];
 
     loader = {
-      systemd-boot.enable = true;
+      # enable systemd-boot on non-pi
+      systemd-boot.enable = !currentPi;
       efi.canTouchEfiVariables = true;
     };
   };

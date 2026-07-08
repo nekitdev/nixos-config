@@ -1,8 +1,8 @@
-_: {
+{ currentPi, ... }: {
   hardware = {
     graphics = {
       enable = true;
-      enable32Bit = true;
+      enable32Bit = !currentPi;
     };
 
     enableRedistributableFirmware = true;

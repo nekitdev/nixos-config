@@ -8,6 +8,12 @@
     # nixpkgs for testing purposes
     nixpkgs-testing.url = "github:nixos/nixpkgs";
 
+    # nixos for raspberry pi
+    nixos-raspberrypi = {
+      url = "github:nvmd/nixos-raspberrypi/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # declarative disk management
     disko = {
       url = "github:nix-community/disko/latest";
@@ -43,6 +49,7 @@
     {
       nixpkgs,
       nixpkgs-testing,
+      nixos-raspberrypi,
       disko,
       home-manager,
       sops-nix,
@@ -60,6 +67,7 @@
         inherit
           nixpkgs
           nixpkgs-testing
+          nixos-raspberrypi
           overlays
           disko
           home-manager
@@ -72,12 +80,11 @@
       nixosConfigurations = {
         laptop = mkSystem "laptop" {
           system = "x86_64-linux";
-          profile = "nvidia-laptop";
         };
-        # pi = mkSystem "pi" {
-        #   system = "aarch64-linux";
-        #   profile = "pi";
-        # };
+        pi = mkSystem "pi" {
+          system = "aarch64-linux";
+          pi = true;
+        };
       };
     };
 }

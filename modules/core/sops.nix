@@ -6,6 +6,7 @@ _: {
       sshKeyPaths = [ ];
     };
     secrets = {
+      zfs = { }; # TODO: initrd
       password = {
         neededForUsers = true;
       };

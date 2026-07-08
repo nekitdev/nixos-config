@@ -2,13 +2,13 @@
   # flakes
   nixpkgs,
   nixpkgs-testing,
+  nixos-raspberrypi,
   overlays,
   disko,
   home-manager,
   sops-nix,
   # inputs
   inputs,
-  # library and config
   ...
 }:
 let
@@ -20,7 +20,6 @@ let
 in
 name:
 {
-  profile,
   system,
   pi ? defaultPi,
   user ? defaultUser,
@@ -29,7 +28,10 @@ name:
   stateVersion ? defaultStateVersion,
 }:
 let
-  nixosSystem = nixpkgs.lib.nixosSystem;
+  nixSystem = nixpkgs.lib.nixosSystem;
+  piSystem = nixos-raspberrypi.lib.nixosSystemFull;
+
+  nixosSystem = if pi then piSystem else nixSystem;
 
   host = ../hosts/${name};
   core = ../modules/core;
@@ -38,17 +40,26 @@ let
     inherit nixpkgs-testing allowUnfree;
   };
 
+  piSpecialArgs =
+    if pi then
+      {
+        rpi = nixos-raspberrypi;
+      }
+    else
+      { };
+
   mergedSpecialArgs = {
     inherit inputs;
 
     inherit stateVersion;
 
     currentName = name;
-    currentProfile = profile;
     currentSystem = system;
+    currentPi = pi;
     currentUser = user;
     currentAllowUnfree = allowUnfree;
   }
+  // piSpecialArgs
   // specialArgs;
 in
 nixosSystem {
@@ -84,7 +95,5 @@ nixosSystem {
 
     # generic configuration
     core
-
-    # TODO: profiles
   ];
 }
