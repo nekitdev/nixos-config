@@ -2,7 +2,10 @@
 let
   additional =
     if currentPi then
-      [ ]
+      with pkgs;
+      [
+        spotatui
+      ]
     else
       with pkgs;
       [
