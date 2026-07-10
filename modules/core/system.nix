@@ -4,6 +4,8 @@
     settings = {
       # allow the current user to connect to nix
       allowed-users = [ currentUser ];
+      # allow the current user to trust substituters
+      trusted-users = [ currentUser ];
 
       # automatically optimize store
       auto-optimise-store = true;

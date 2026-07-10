@@ -65,13 +65,20 @@ _: {
             };
           };
           # main partition
-          zfs = {
-            label = "ZFS";
+          luks = {
+            label = "CRYPTED";
             # use the rest of the disk
             size = "100%";
+
             content = {
-              type = "zfs";
-              pool = "rpool"; # zroot
+              type = "luks";
+              name = "crypted";
+              # trim support
+              settings.allowDiscards = true;
+              content = {
+                type = "zfs";
+                pool = "rpool"; # zroot
+              };
             };
           };
         };
@@ -106,10 +113,6 @@ _: {
           mountpoint = "none";
           # do not allow mounting
           canmount = "off";
-          # TODO: encryption
-          # encryption = "aes-256-gcm";
-          # keylocation = "file:///run/secrets/zfs";
-          # keyformat = "hex";
         };
 
         # postCreateHook?

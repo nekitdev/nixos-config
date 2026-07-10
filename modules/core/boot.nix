@@ -4,7 +4,7 @@ let
 in
 {
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_7_0;
 
     extraModulePackages = [ pkgs.rtw89 ];
 

@@ -32,10 +32,8 @@ in
       # design
       figma-linux
       # development
-      omnisharp-roslyn
       capnproto
       capnproto-rust
-      avalonia
       clang
       clang-tools
       nixd

@@ -13,6 +13,7 @@ in
   ];
 
   boot = {
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
     initrd = {
       availableKernelModules = [
         "xhci_pci"
