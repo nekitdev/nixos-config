@@ -1,5 +1,9 @@
 { pkgs, currentPi, ... }:
 let
+  just-unchecked = pkgs.just.overrideAttrs (old: {
+    doCheck = false;
+  });
+
   additional =
     if currentPi then
       with pkgs;
@@ -40,7 +44,7 @@ in
       typos
       typos-lsp
       taplo
-      just
+      just-unchecked
       uv
       postman
       meilisearch
