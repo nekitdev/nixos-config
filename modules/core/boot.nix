@@ -1,10 +1,10 @@
 { pkgs, currentPi, ... }:
 let
-
+  kernel = if currentPi then pkgs.linuxPackages_6_18 else pkgs.linuxPackages_latest;
 in
 {
   boot = {
-    kernelPackages = pkgs.linuxPackages_7_0;
+    kernelPackages = kernel;
 
     extraModulePackages = [ pkgs.rtw89 ];
 

@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, pi, ... }:
 let
-  packages = pkgs.linuxPackages_7_0;
+  packages = if pi then pkgs.linuxPackages_6_18 else pkgs.linuxPackages_latest;
 in
 {
   happ = pkgs.qt6.callPackage ./happ.nix { };

@@ -37,7 +37,7 @@ let
   core = ../modules/core;
 
   provided = import ../overlays {
-    inherit nixpkgs-testing allowUnfree;
+    inherit nixpkgs-testing allowUnfree pi;
   };
 
   piSpecialArgs =
