@@ -6,9 +6,8 @@ let
 
   additional =
     if currentPi then
-      with pkgs;
       [
-        spotatui
+        pkgs.spotatui
       ]
     else
       with pkgs;
@@ -20,6 +19,16 @@ let
         prismlauncher
         # music
         spotify
+        # notes
+        obsidian
+        # design
+        figma-linux
+        # development
+        clang
+        clang-tools
+        postman
+        typst
+        tinymist
       ];
 in
 {
@@ -31,25 +40,16 @@ in
       signal-desktop
       # config
       yubioath-flutter
-      # notes
-      obsidian
-      # design
-      figma-linux
       # development
       capnproto
       capnproto-rust
-      clang
-      clang-tools
       nixd
       typos
       typos-lsp
       taplo
       just-unchecked
       uv
-      postman
       meilisearch
-      typst
-      tinymist
       dioxus-cli
       tokei
       hexyl

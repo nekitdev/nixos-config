@@ -1,6 +1,6 @@
 { pkgs, currentPi, ... }:
 let
-  additional = if currentPi then [ ] else with pkgs; [ tor-browser ];
+  additional = if currentPi then [ ] else [ pkgs.tor-browser ];
 in
 {
   programs.firefox = {
