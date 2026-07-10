@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  packages = pkgs.linuxPackages_latest;
+  packages = pkgs.linuxPackages_7_0;
 in
 {
   happ = pkgs.qt6.callPackage ./happ.nix { };
