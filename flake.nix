@@ -11,7 +11,6 @@
     # nixos for raspberry pi
     nixos-raspberrypi = {
       url = "github:nvmd/nixos-raspberrypi/main";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # declarative disk management
