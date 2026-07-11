@@ -1,6 +1,15 @@
 {
   description = "NixOS configuration by nekitdev";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://nekitdev-pi.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nekitdev-pi.cachix.org-1:+8KLtRZ1lDW2gNXyxwe/uSVr4coYmZZrOcoNxf5HnRQ="
+    ];
+  };
+
   inputs = {
     # primary nixpkgs channel
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
