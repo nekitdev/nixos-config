@@ -38,7 +38,7 @@ jobs:
           tags: tag:ci
 
       - name: Build
-        run: nix build --print-build-logs .#nixosConfigurations.pi.config.system.build.toplevel
+        run: nix build --keep-going --print-build-logs .#nixosConfigurations.pi.config.system.build.toplevel
 
       - name: Copy
         run: nix copy --to ssh://root@pi-installer?remote-store=/mnt/nix/store ./result
