@@ -20,10 +20,7 @@
     nixpkgs-testing.url = "github:nixos/nixpkgs";
 
     # nixos for raspberry pi
-    nixos-raspberrypi = {
-      url = "github:nvmd/nixos-raspberrypi/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi";
 
     # declarative disk management
     disko = {
