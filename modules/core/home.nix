@@ -52,6 +52,14 @@ in
         username = currentUser;
         homeDirectory = "/home/${currentUser}";
 
+        shell = {
+          enableShellIntegration = true;
+          enableBashIntegration = true;
+          enableFishIntegration = true;
+          enableZshIntegration = false;
+          enableNushellIntegration = false;
+        };
+
         inherit stateVersion;
       };
 

@@ -1,12 +1,18 @@
 {
   # flakes
   nixpkgs,
-  nixpkgs-testing,
+  # nixpkgs-pi,
   nixos-raspberrypi,
-  overlays,
   disko,
+  disko-pi,
   home-manager,
+  home-manager-pi,
   sops-nix,
+  sops-nix-pi,
+  niri,
+  niri-pi,
+  rust-overlay,
+  rust-overlay-pi,
   # inputs
   inputs,
   ...
@@ -16,7 +22,7 @@ let
   defaultUser = "nekit";
   defaultAllowUnfree = true;
   defaultSpecialArgs = { };
-  defaultStateVersion = "26.11";
+  defaultStateVersion = "26.05";
 in
 name:
 {
@@ -36,9 +42,22 @@ let
   host = ../hosts/${name};
   core = ../modules/core;
 
+  disko-system = if pi then disko-pi else disko;
+  home-manager-system = if pi then home-manager-pi else home-manager;
+  sops-nix-system = if pi then sops-nix-pi else sops-nix;
+  niri-system = if pi then niri-pi else niri;
+  rust-overlay-system = if pi then rust-overlay-pi else rust-overlay;
+
+  defined = [
+    niri-system.overlays.niri
+    rust-overlay-system.overlays.default
+  ];
+
   provided = import ../overlays {
-    inherit nixpkgs-testing allowUnfree pi;
+    inherit allowUnfree pi;
   };
+
+  overlays = defined ++ builtins.attrValues provided;
 
   piSpecialArgs =
     if pi then
@@ -69,18 +88,17 @@ nixosSystem {
 
   modules = [
     # add sops
-    sops-nix.nixosModules.sops
+    sops-nix-system.nixosModules.sops
 
     # add disko
-    disko.nixosModules.disko
+    disko-system.nixosModules.disko
 
     # add home-manager
-    home-manager.nixosModules.home-manager
+    home-manager-system.nixosModules.home-manager
 
     {
       nixpkgs = {
-        # apply overlays before anything else in order for them to be available globally
-        overlays = overlays ++ builtins.attrValues provided;
+        inherit overlays;
 
         # allow unfree packages if desired
         config.allowUnfree = allowUnfree;
