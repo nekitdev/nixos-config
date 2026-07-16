@@ -3,9 +3,17 @@
 
   nixConfig = {
     extra-substituters = [
+      # additional caches
+      "https://nekitdev-pi.cachix.org"
+      "https://nekitbot-pi.cachix.org"
+      # main cache
       "https://cache.nekit.dev"
     ];
     extra-trusted-public-keys = [
+      # additional caches
+      "nekitdev-pi.cachix.org-1:+8KLtRZ1lDW2gNXyxwe/uSVr4coYmZZrOcoNxf5HnRQ="
+      "nekitbot-pi.cachix.org-1:tQFIFF7zpVUt+5FGLbZeRAsOUq0srZt248QdDE/ObkA="
+      # main caches
       "cache.nekit.dev-1:Bp0/bwOBNHle6gaxPfdjtk5EI8uXm8d8NuyFz4/l7eE="
     ];
   };
