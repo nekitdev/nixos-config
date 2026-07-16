@@ -5,3 +5,7 @@ result/
 # direnv
 
 .direnv/
+
+# extra files
+
+extra-files/

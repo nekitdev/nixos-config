@@ -13,7 +13,7 @@ _: {
       "--group-directories-first"
       "--header"
       "--git-ignore"
-      "--hyperlink"
+      "--hyperlink=auto"
     ];
   };
 }

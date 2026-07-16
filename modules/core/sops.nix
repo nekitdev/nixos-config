@@ -6,6 +6,7 @@ _: {
       sshKeyPaths = [ ];
     };
     secrets = {
+      cache = { };
       password = {
         neededForUsers = true;
       };
