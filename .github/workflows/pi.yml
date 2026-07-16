@@ -27,8 +27,8 @@ jobs:
       - name: Setup Cachix
         uses: cachix/cachix-action@v17
         with:
-          name: nekitbot-pi
-          authToken: ${{ secrets.CACHIX_BOT_TOKEN }}
+          name: nekitdev-pi
+          authToken: ${{ secrets.CACHIX_PI_TOKEN }}
 
       - name: Connect to Tailscale
         uses: tailscale/github-action@v4
