@@ -30,7 +30,7 @@ let
     openssl
   ];
 
-  version = "3.1.0";
+  version = "2.18.3";
 
   hostSystem = stdenv.hostPlatform.system;
 
@@ -42,8 +42,8 @@ let
   };
 
   hash = selectSystem {
-    x86_64-linux = "sha256-j/rrUKSpjI2ly0o1WxcIPLc0rId6ZRRhc7AI3nGTVgM=";
-    aarch64-linux = "sha256-vsOsa1beaJHQwqXWqq7Ib0KKx4Ntdebfm+QILEXbPyI=";
+    x86_64-linux = "sha256-x2G4RCroEWT/FpjjXrCncVoYhkb5zJ0Ckwd10sC5QxQ=";
+    aarch64-linux = "sha256-HO9i3UlVALd3FTGmy8Nq6BuZuBaZw6hWwhlOio/srzA=";
   };
 
   libraryPath = lib.makeLibraryPath [ openssl ];
