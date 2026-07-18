@@ -14,6 +14,7 @@ let
       [
         # social
         discord-canary
+        signal-desktop
         # games
         osu-lazer-bin
         prismlauncher
@@ -37,7 +38,6 @@ in
     [
       # social
       telegram-desktop
-      signal-desktop
       # config
       yubioath-flutter
       # development
