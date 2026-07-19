@@ -10,6 +10,7 @@ let
         });
       };
     };
+    python3Packages = self.python3.pkgs;
   };
 in
 {
