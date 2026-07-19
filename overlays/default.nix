@@ -1,4 +1,18 @@
-{ pi, ... }: {
+{ pi, ... }:
+let
+  no-modifications = self: super: { };
+
+  pi-modifications = self: super: {
+    python3 = super.python3.override {
+      packageOverrides = pySelf: pySuper: {
+        cryptography = pySuper.cryptography.overrideAttrs(old: {
+          doCheck = false;
+        });
+      };
+    };
+  };
+in
+{
   # adds custom packages as defined in `pkgs`
   additions =
     self: _:
@@ -9,5 +23,5 @@
     };
 
   # modifies existing packages
-  modifications = self: super: { };
+  modifications = if pi then pi-modifications else no-modifications;
 }
