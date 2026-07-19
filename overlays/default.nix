@@ -1,28 +1,16 @@
 { pi, ... }:
 let
-  no-modifications = self: super: { };
-
-  pi-modifications = self: super: {
-    python3 = super.python3.override {
-      packageOverrides = pySelf: pySuper: {
-        cryptography = pySuper.cryptography.overrideAttrs(old: {
-          doCheck = false;
-        });
-      };
-    };
-    python3Packages = self.python3.pkgs;
+  pkgs-additions = self: _: import ../pkgs {
+    inherit pi;
+    inherit (self) pkgs;
   };
+
+  no-modifications = _: _: { };
 in
 {
   # adds custom packages as defined in `pkgs`
-  additions =
-    self: _:
-    import ../pkgs {
-      inherit pi;
-
-      pkgs = self.pkgs;
-    };
+  additions = pkgs-additions;
 
   # modifies existing packages
-  modifications = if pi then pi-modifications else no-modifications;
+  modifications = no-modifications;
 }
