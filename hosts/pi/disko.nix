@@ -64,6 +64,17 @@ _: {
               ];
             };
           };
+          swap = {
+            label = "SWAP";
+
+            # same size as RAM
+            size = "16G";
+
+            content = {
+              type = "swap";
+              randomEncryption = true;
+            };
+          };
           # main partition
           luks = {
             label = "CRYPTED";

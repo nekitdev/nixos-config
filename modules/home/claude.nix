@@ -1,5 +1,5 @@
-_: {
+{ currentPi, ... }: {
   programs.claude-code = {
-    enable = true;
+    enable = !currentPi;
   };
 }

@@ -1,12 +1,10 @@
 _: {
   imports = [
-    # niri before others
-    ./niri
     # the rest of modules
     ./bat.nix
     ./btop.nix
-    ./cava.nix
     ./claude.nix
+    ./dms.nix
     ./eza.nix
     ./fastfetch.nix
     ./fd.nix
@@ -15,9 +13,6 @@ _: {
     ./git.nix
     ./helix.nix
     ./kitty.nix
-    ./launcher.nix
-    ./lock.nix
-    ./notifications.nix
     ./obs.nix
     ./packages.nix
     ./ripgrep.nix

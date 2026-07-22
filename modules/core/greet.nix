@@ -2,11 +2,9 @@
   services.greetd = {
     enable = true;
     useTextGreeter = true;
-    settings = {
-      default_session = {
-        user = currentUser;
-        command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --cmd niri-session";
-      };
+    settings.default_session = {
+      user = currentUser;
+      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
     };
   };
 }

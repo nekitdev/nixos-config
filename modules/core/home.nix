@@ -16,6 +16,9 @@ let
   };
 
   info = users.current.info;
+
+  niri = if currentPi then inputs.niri-pi else inputs.niri;
+  dms = if currentPi then inputs.dms-pi else inputs.dms;
 in
 {
   home-manager = {
@@ -42,8 +45,11 @@ in
     # users
     users.${currentUser} = {
       imports = [
+        # dms
+        dms.homeModules.dank-material-shell
         # niri
-        inputs.niri.homeModules.niri
+        niri.homeModules.niri
+        dms.homeModules.niri
         # home
         ../home
       ];

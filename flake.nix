@@ -3,17 +3,11 @@
 
   nixConfig = {
     extra-substituters = [
-      # additional caches
-      # "https://nekitdev-pi.cachix.org"
-      # "https://nekitbot-pi.cachix.org"
       # main cache
       "https://cache.nekit.dev"
     ];
     extra-trusted-public-keys = [
-      # additional caches
-      # "nekitdev-pi.cachix.org-1:+8KLtRZ1lDW2gNXyxwe/uSVr4coYmZZrOcoNxf5HnRQ="
-      # "nekitbot-pi.cachix.org-1:tQFIFF7zpVUt+5FGLbZeRAsOUq0srZt248QdDE/ObkA="
-      # main caches
+      # main cache
       "cache.nekit.dev-1:Bp0/bwOBNHle6gaxPfdjtk5EI8uXm8d8NuyFz4/l7eE="
     ];
   };
@@ -72,12 +66,12 @@
     # niri is an amazing compositor! ~ nekit
 
     niri = {
-      url = "github:epireyn/niri-flake";
+      url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     niri-pi = {
-      url = "github:epireyn/niri-flake";
+      url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs-pi";
     };
 
@@ -90,6 +84,18 @@
 
     rust-overlay-pi = {
       url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs-pi";
+    };
+
+    # shell to use with niri
+
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dms-pi = {
+      url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs-pi";
     };
   };

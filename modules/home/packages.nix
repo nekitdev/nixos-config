@@ -13,8 +13,9 @@ let
       with pkgs;
       [
         # social
-        discord-canary
+        telegram-desktop
         signal-desktop
+        discord-canary
         # games
         osu-lazer-bin
         prismlauncher
@@ -36,8 +37,6 @@ in
   home.packages =
     with pkgs;
     [
-      # social
-      telegram-desktop
       # config
       yubioath-flutter
       # development
