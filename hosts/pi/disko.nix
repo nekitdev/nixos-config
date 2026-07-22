@@ -17,7 +17,7 @@ _: {
             ];
 
             # ought to be enough
-            size = "512M";
+            size = "1G";
 
             content = {
               type = "filesystem";
@@ -44,7 +44,7 @@ _: {
             ];
 
             # should be enough
-            size = "512M";
+            size = "1G";
 
             content = {
               type = "filesystem";
