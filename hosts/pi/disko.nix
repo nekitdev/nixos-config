@@ -84,8 +84,15 @@ _: {
             content = {
               type = "luks";
               name = "crypted";
-              # trim support
-              settings.allowDiscards = true;
+              settings = {
+                # trim support
+                allowDiscards = true;
+                # yubikey support
+                crypttabExtraOpts = [
+                  "fido2-device=auto"
+                  "token-timeout=10"
+                ];
+              };
               content = {
                 type = "zfs";
                 pool = "rpool"; # zroot
