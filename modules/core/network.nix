@@ -18,7 +18,10 @@
       "1.0.0.1"
     ];
 
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      wifi.powersave = false;
+    };
 
     firewall = {
       enable = true;
