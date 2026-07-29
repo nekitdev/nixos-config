@@ -90,7 +90,7 @@ _: {
                 # yubikey support
                 crypttabExtraOpts = [
                   "fido2-device=auto"
-                  "token-timeout=10"
+                  "token-timeout=30"
                 ];
               };
               content = {
