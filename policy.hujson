@@ -1,0 +1,37 @@
+{
+    "grants": [
+        // `main` has access to everything
+        {
+            "src": ["tag:main"],
+            "dst": ["*"],
+            "ip": ["*"],
+        },
+        // `phone` has access to `main`
+        {
+            "src": ["tag:phone"],
+            "dst": ["tag:main"],
+            "ip": ["*"],
+        },
+    ],
+    "ssh": [
+        // `main` can `ssh` into `pi`
+        {
+            "action": "accept",
+            "src": ["tag:main"],
+            "dst": ["tag:pi"],
+            "users": ["autogroup:nonroot", "root"],
+        },
+        // `phone` can `ssh` into `main`
+        {
+            "action": "accept",
+            "src": ["tag:phone"],
+            "dst": ["tag:main"],
+            "users": ["autogroup:nonroot", "root"],
+        },
+    ],
+    "tagOwners": {
+        "tag:pi": ["nekitdev@github"],
+        "tag:main": ["nekitdev@github"],
+        "tag:phone": ["nekitdev@github"],
+    },
+}
