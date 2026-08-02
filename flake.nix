@@ -3,12 +3,16 @@
 
   nixConfig = {
     extra-substituters = [
+      # community cache
+      "https://nix-community.cachix.org"
       # main cache
-      "https://cache.nekit.dev"
+      # "https://cache.nekit.dev"
     ];
     extra-trusted-public-keys = [
+      # community cache
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       # main cache
-      "cache.nekit.dev-1:Bp0/bwOBNHle6gaxPfdjtk5EI8uXm8d8NuyFz4/l7eE="
+      # "cache.nekit.dev-1:Bp0/bwOBNHle6gaxPfdjtk5EI8uXm8d8NuyFz4/l7eE="
     ];
   };
 
@@ -23,7 +27,7 @@
 
     # nixos for raspberry pi
     nixos-raspberrypi = {
-      url = "github:nvmd/nixos-raspberrypi";
+      url = "github:nvmd/nixos-raspberrypi/main";
       inputs.nixpkgs.follows = "nixpkgs-pi";
     };
 
