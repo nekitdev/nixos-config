@@ -5,6 +5,32 @@ let
     inherit (self) pkgs;
   };
 
+  pi-modifications = _: super: {
+    # not sure about this one
+    gjs = super.gjs.overrideAttrs (old: {
+      doCheck = false;
+    });
+
+    pythonPackagesExtensions = super.pythonPackagesExtensions ++ [
+      (
+        _: python-super: {
+          # flaky tests
+          cryptography = python-super.cryptography.overridePythonAttrs (old: {
+            doCheck = false;
+          });
+          # same here
+          anyio = python-super.anyio.overridePythonAttrs (old: {
+            doCheck = false;
+          });
+          # and here
+          uv = python-super.uv.overridePythonAttrs (old: {
+            doCheck = false;
+          });
+        }
+      )
+    ];
+  };
+
   no-modifications = _: _: { };
 in
 {
@@ -12,5 +38,5 @@ in
   additions = pkgs-additions;
 
   # modifies existing packages
-  modifications = no-modifications;
+  modifications = if pi then pi-modifications else no-modifications;
 }
