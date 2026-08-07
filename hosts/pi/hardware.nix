@@ -3,7 +3,7 @@ _: {
     blacklistedKernelModules = [ "vc4" ]; # `modprobe` later
     loader.raspberry-pi.bootloader = "kernelboot";
     initrd = {
-      kernelModules = [ "usb_storage" "usbhid" "xhci_pci" ];
+      kernelModules = [ "usb_storage" "usbhid" "xhci_hcd" "xhci_pci" ];
       systemd = {
         enable = true;
         services.usb-delay = {
