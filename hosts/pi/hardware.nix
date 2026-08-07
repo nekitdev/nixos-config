@@ -1,6 +1,6 @@
 _: {
   boot = {
-    loader.raspberry-pi.bootloader = "kernel";
+    loader.raspberry-pi.bootloader = "kernelboot";
     initrd.systemd.enable = true;
     zfs.forceImportRoot = false;
   };
