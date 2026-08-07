@@ -1,21 +1,10 @@
 _: {
   boot = {
     blacklistedKernelModules = [ "vc4" ]; # `modprobe` later
-    loader.raspberry-pi.bootloader = "kernelboot";
+    loader.raspberry-pi.bootloader = "kernel";
     initrd = {
       kernelModules = [ "usb_storage" "usbhid" "xhci_hcd" "xhci_pci" ];
-      systemd = {
-        enable = true;
-        services.nvme-delay = {
-          wantedBy = [ "initrd.target" ];
-          before = [ "systemd-cryptsetup@crypted.service" ];
-          after = [ "usbhid.service" ];
-          serviceConfig = {
-            Type = "oneshot";
-          };
-          script = "sleep 3";
-        };
-      };
+      systemd.enable = true;
     };
     zfs.forceImportRoot = false;
   };
