@@ -2,7 +2,10 @@ _: {
   boot = {
     blacklistedKernelModules = [ "vc4" ]; # `modprobe` later
     loader.raspberry-pi.bootloader = "kernelboot";
-    initrd.systemd.enable = true;
+    initrd = {
+      kernelModules = [ "usb_storage" "usbhid" "xhci_pci" ];
+      systemd.enable = true;
+    };
     zfs.forceImportRoot = false;
   };
 
