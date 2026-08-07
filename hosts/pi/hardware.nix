@@ -6,13 +6,14 @@ _: {
       kernelModules = [ "usb_storage" "usbhid" "xhci_hcd" "xhci_pci" ];
       systemd = {
         enable = true;
-        services.usb-delay = {
+        services.nvme-delay = {
           wantedBy = [ "initrd.target" ];
           before = [ "systemd-cryptsetup@crypted.service" ];
+          after = [ "usbhid.service" ];
           serviceConfig = {
             Type = "oneshot";
           };
-          script = "sleep 2";
+          script = "sleep 3";
         };
       };
     };
