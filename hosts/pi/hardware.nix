@@ -4,7 +4,17 @@ _: {
     loader.raspberry-pi.bootloader = "kernelboot";
     initrd = {
       kernelModules = [ "usb_storage" "usbhid" "xhci_pci" ];
-      systemd.enable = true;
+      systemd = {
+        enable = true;
+        services.usb-delay = {
+          wantedBy = [ "initrd.target" ];
+          before = [ "systemd-cryptsetup@crypted.service" ];
+          serviceConfig = {
+            Type = "oneshot";
+          };
+          script = "sleep 2";
+        };
+      };
     };
     zfs.forceImportRoot = false;
   };
