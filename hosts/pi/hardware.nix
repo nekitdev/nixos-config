@@ -6,24 +6,6 @@ _: {
       kernelModules = [ "usb_storage" "usbhid" "xhci_hcd" "xhci_pci" ];
       systemd = {
         enable = true;
-
-        services = {
-          usb-delay = {
-            wantedBy = [ "initrd.target" ];
-            before = [ "systemd-cryptsetup@crypted.service" ];
-            serviceConfig = {
-              Type = "oneshot";
-            };
-            script = ''
-              sleep 5
-            '';
-          };
-
-          "systemd-cryptsetup@crypted" = {
-            requires = [ "usb-delay.service" ];
-            after = [ "usb-delay.service" ];
-          };
-        };
       };
     };
     zfs.forceImportRoot = false;
