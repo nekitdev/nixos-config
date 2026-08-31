@@ -7,7 +7,7 @@ in
     niri = {
       enable = true;
 
-      package = pkgs.niri-unstable;
+      package = pkgs.niri;
 
       settings = {
         prefer-no-csd = true;

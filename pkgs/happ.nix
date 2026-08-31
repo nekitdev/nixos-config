@@ -30,7 +30,7 @@ let
     openssl
   ];
 
-  version = "3.3.6";
+  version = "4.1.1";
 
   hostSystem = stdenv.hostPlatform.system;
 
@@ -42,8 +42,8 @@ let
   };
 
   hash = selectSystem {
-    x86_64-linux = "sha256-p9rFEnc4e/4QSbGtQPQPLnSvIzpeqwILW+GmIu/8RqQ=";
-    aarch64-linux = "sha256-pNPW3Ksdth2yPN8PhrznNgFIhyYrVwknvv5Iy0nxSqY=";
+    x86_64-linux = "sha256-LPP+BvEyU3JjyWiBo5HM5IMQruwHSLZ0GkNXsKYtzbg=";
+    aarch64-linux = "sha256-7rKubbSPsG+0GKT+wDAYMWboE1CRXV0V6vodlmz9X1s=";
   };
 
   libraryPath = lib.makeLibraryPath [ openssl ];
@@ -86,7 +86,7 @@ stdenv.mkDerivation {
     ln -s $out/share/happ/bin/Happ $out/bin
     ln -s $out/share/happ/bin/happd $out/bin
 
-    sed -i "s|Exec.*$|Exec=$out/bin/Happ %f|" $out/share/applications/Happ.desktop
+    substituteInPlace $out/share/applications/Happ.desktop --replace-fail "/opt/happ/bin/Happ" "$out/bin/Happ"
 
     runHook postInstall
   '';

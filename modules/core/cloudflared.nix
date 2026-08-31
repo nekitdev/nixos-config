@@ -15,6 +15,7 @@
           "lyrichar.app" = "http://127.0.0.1:4213";
           "open.lyrichar.app" = "http://127.0.0.1:1369";
           "api.lyrichar.app" = "http://127.0.0.1:1342";
+          "matrix.nekit.dev" = "http://127.0.0.1:6167";
         };
 
         default = "http_status:503";

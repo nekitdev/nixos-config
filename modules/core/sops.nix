@@ -6,6 +6,10 @@ _: {
       sshKeyPaths = [ ];
     };
     secrets = {
+      matrix = {
+        owner = "tuwunel";
+        mode = "0400";
+      };
       subscription = { };
       cache = { };
       password = {

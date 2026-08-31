@@ -17,6 +17,7 @@ _: {
     ./home.nix
     ./keyboard.nix
     ./keyring.nix
+    ./matrix.nix
     ./network.nix
     ./nh.nix
     ./nix-related.nix
