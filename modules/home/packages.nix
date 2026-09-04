@@ -31,6 +31,9 @@ let
         postman
         typst
         tinymist
+        # microcontrollers
+        kicad-small
+        stlink
       ];
 in
 {

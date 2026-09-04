@@ -17,6 +17,7 @@ _: {
     ./packages.nix
     ./ripgrep.nix
     ./starship.nix
+    ./vscode.nix
     ./yazi.nix
     ./zed.nix
     ./zoxide.nix

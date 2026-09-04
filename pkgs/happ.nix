@@ -14,6 +14,7 @@
   stdenv,
   wrapQtAppsHook,
   zlib,
+  ...
 }:
 
 let
@@ -30,7 +31,7 @@ let
     openssl
   ];
 
-  version = "4.1.1";
+  version = "4.2.1";
 
   hostSystem = stdenv.hostPlatform.system;
 
@@ -42,8 +43,8 @@ let
   };
 
   hash = selectSystem {
-    x86_64-linux = "sha256-LPP+BvEyU3JjyWiBo5HM5IMQruwHSLZ0GkNXsKYtzbg=";
-    aarch64-linux = "sha256-7rKubbSPsG+0GKT+wDAYMWboE1CRXV0V6vodlmz9X1s=";
+    x86_64-linux = "sha256-vIvAvWH4/ZblxYEXzthc2wrcPCinA+eWXs3/EIlUrnU=";
+    aarch64-linux = "sha256-g6WrSlwkThLCq+gcUDCRkAjMA5XuDcvzHgtCw79OChg=";
   };
 
   libraryPath = lib.makeLibraryPath [ openssl ];

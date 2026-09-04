@@ -76,27 +76,13 @@ _: {
             };
           };
           # main partition
-          luks = {
-            label = "CRYPTED";
+          zfs = {
+            label = "ZFS";
             # use the rest of the disk
             size = "100%";
-
             content = {
-              type = "luks";
-              name = "crypted";
-              settings = {
-                # trim support
-                allowDiscards = true;
-                # yubikey support
-                crypttabExtraOpts = [
-                  "fido2-device=auto"
-                  "token-timeout=30"
-                ];
-              };
-              content = {
-                type = "zfs";
-                pool = "rpool"; # zroot
-              };
+              type = "zfs";
+              pool = "rpool"; # zroot
             };
           };
         };
