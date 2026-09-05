@@ -22,6 +22,9 @@
     # primary nixpkgs channel
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # stable nixpkgs channel
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
+
     # nixpkgs for pi
     nixpkgs-pi.url = "github:nixos/nixpkgs/nixos-26.05";
 
@@ -107,6 +110,7 @@
   outputs =
     {
       nixpkgs,
+      nixpkgs-stable,
       nixpkgs-pi,
       nixos-raspberrypi,
       disko,
@@ -125,6 +129,7 @@
       mkSystem = import ./lib/system.nix {
         inherit
           nixpkgs
+          nixpkgs-stable
           nixpkgs-pi
           nixos-raspberrypi
           disko

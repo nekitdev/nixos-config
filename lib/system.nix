@@ -1,6 +1,7 @@
 {
   # flakes
   nixpkgs,
+  nixpkgs-stable,
   # nixpkgs-pi,
   nixos-raspberrypi,
   disko,
@@ -42,6 +43,14 @@ let
   host = ../hosts/${name};
   core = ../modules/core;
 
+  pkgs-stable = import nixpkgs-stable {
+    inherit system;
+
+    config.allowUnfree = allowUnfree;
+
+    hostPlatform = system;
+  };
+
   disko-system = if pi then disko-pi else disko;
   home-manager-system = if pi then home-manager-pi else home-manager;
   sops-nix-system = if pi then sops-nix-pi else sops-nix;
@@ -54,7 +63,7 @@ let
   ];
 
   provided = import ../overlays {
-    inherit allowUnfree pi;
+    inherit pkgs-stable pi;
   };
 
   overlays = defined ++ builtins.attrValues provided;
@@ -71,6 +80,8 @@ let
     inherit inputs;
 
     inherit stateVersion;
+
+    inherit pkgs-stable;
 
     currentName = name;
     currentSystem = system;
