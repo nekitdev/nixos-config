@@ -26,6 +26,10 @@ let
           uv = python-super.uv.overridePythonAttrs (old: {
             doCheck = false;
           });
+          # you guessed it
+          urwid = python-super.urwid.overridePythonAttrs (old: {
+            doCheck = false;
+          });
           # tries to open display
           mss = python-super.mss.overridePythonAttrs(old: {
             doCheck = false;
