@@ -1,4 +1,4 @@
-_: {
+{ currentPi, ... }: {
   sops = {
     defaultSopsFile = ../../secrets/sops.yaml;
     gnupg = {
@@ -6,10 +6,14 @@ _: {
       sshKeyPaths = [ ];
     };
     secrets = {
-      matrix = {
-        owner = "tuwunel";
-        mode = "0400";
-      };
+      matrix =
+        if currentPi then
+          {
+            owner = "tuwunel";
+            mode = "0400";
+          }
+        else
+          { };
       subscription = { };
       cache = { };
       password = {

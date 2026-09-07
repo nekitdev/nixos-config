@@ -13,7 +13,6 @@ _: {
     ./git.nix
     ./helix.nix
     ./kitty.nix
-    ./obs.nix
     ./packages.nix
     ./ripgrep.nix
     ./starship.nix

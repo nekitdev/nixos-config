@@ -31,6 +31,8 @@ let
         postman
         typst
         tinymist
+        # java
+        jetbrains.idea
         # microcontrollers
         kicad-small
         stlink

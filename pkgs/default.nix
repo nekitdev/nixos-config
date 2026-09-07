@@ -1,4 +1,9 @@
-{ pkgs, pkgs-stable, pi, ... }:
+{
+  pkgs,
+  pkgs-stable,
+  pi,
+  ...
+}:
 let
   packages = if pi then pkgs.linuxPackages_6_18 else pkgs.linuxPackages_latest;
 in

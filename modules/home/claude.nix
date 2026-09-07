@@ -1,5 +1,9 @@
-{ currentPi, ... }: {
-  programs.claude-code = {
-    enable = !currentPi;
-  };
-}
+{ currentPi, ... }:
+if currentPi then
+  { }
+else
+  {
+    programs.claude-code = {
+      enable = true;
+    };
+  }

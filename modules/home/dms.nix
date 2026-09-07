@@ -1,4 +1,9 @@
-{ config, pkgs, currentName, ... }:
+{
+  config,
+  pkgs,
+  currentName,
+  ...
+}:
 let
   outputs = import ../../hosts/${currentName}/outputs.nix { };
 in

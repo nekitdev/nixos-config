@@ -3,10 +3,13 @@ _: {
     blacklistedKernelModules = [ "vc4" ]; # `modprobe` later
     loader.raspberry-pi.bootloader = "kernelboot-legacy-unsupported";
     initrd = {
-      kernelModules = [ "usb_storage" "usbhid" "xhci_hcd" "xhci_pci" ];
-      systemd = {
-        enable = true;
-      };
+      kernelModules = [
+        "usb_storage"
+        "usbhid"
+        "xhci_hcd"
+        "xhci_pci"
+      ];
+      systemd.enable = true;
     };
     zfs.forceImportRoot = false;
   };

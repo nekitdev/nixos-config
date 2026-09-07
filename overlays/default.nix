@@ -1,9 +1,11 @@
 { pkgs-stable, pi, ... }:
 let
-  pkgs-additions = self: _: import ../pkgs {
-    inherit pkgs-stable pi;
-    inherit (self) pkgs;
-  };
+  pkgs-additions =
+    self: _:
+    import ../pkgs {
+      inherit pkgs-stable pi;
+      inherit (self) pkgs;
+    };
 
   pi-modifications = _: super: {
     # not sure about this one
@@ -12,30 +14,28 @@ let
     });
 
     pythonPackagesExtensions = super.pythonPackagesExtensions ++ [
-      (
-        _: python-super: {
-          # flaky tests
-          cryptography = python-super.cryptography.overridePythonAttrs (old: {
-            doCheck = false;
-          });
-          # same here
-          anyio = python-super.anyio.overridePythonAttrs (old: {
-            doCheck = false;
-          });
-          # and here
-          uv = python-super.uv.overridePythonAttrs (old: {
-            doCheck = false;
-          });
-          # you guessed it
-          urwid = python-super.urwid.overridePythonAttrs (old: {
-            doCheck = false;
-          });
-          # tries to open display
-          mss = python-super.mss.overridePythonAttrs(old: {
-            doCheck = false;
-          });
-        }
-      )
+      (_: python-super: {
+        # flaky tests
+        cryptography = python-super.cryptography.overridePythonAttrs (old: {
+          doCheck = false;
+        });
+        # same here
+        anyio = python-super.anyio.overridePythonAttrs (old: {
+          doCheck = false;
+        });
+        # and here
+        uv = python-super.uv.overridePythonAttrs (old: {
+          doCheck = false;
+        });
+        # you guessed it
+        urwid = python-super.urwid.overridePythonAttrs (old: {
+          doCheck = false;
+        });
+        # tries to open display
+        mss = python-super.mss.overridePythonAttrs (old: {
+          doCheck = false;
+        });
+      })
     ];
   };
 

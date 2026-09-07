@@ -1,4 +1,5 @@
 _: {
+  # TODO: zfs?
   disko.devices = {
     disk.main = {
       type = "disk";
