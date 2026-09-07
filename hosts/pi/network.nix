@@ -1,4 +1,4 @@
 _: {
-  # this is "rpi5" in hex
-  networking.hostId = "72706935";
+  # needed for zfs
+  networking.hostId = "8425e349";
 }
