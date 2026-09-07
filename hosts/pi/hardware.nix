@@ -1,6 +1,5 @@
 _: {
   boot = {
-    blacklistedKernelModules = [ "vc4" ]; # `modprobe` later
     kernelModules = [
       "usb_storage"
       "usbhid"
@@ -16,19 +15,7 @@ _: {
     zfs.forceImportRoot = false;
   };
 
-  systemd.services = {
-    zfs-mount.enable = false;
-
-    modprobe-vc4 = {
-      serviceConfig = {
-        Type = "oneshot";
-        User = "root";
-      };
-      before = [ "multi-user.target" ];
-      wantedBy = [ "multi-user.target" ];
-      script = "/run/current-system/sw/bin/modprobe vc4";
-    };
-  };
+  systemd.services.zfs-mount.enable = false;
 
   # ignore partitions with "required partition" attribute
   services.udev.extraRules = ''
