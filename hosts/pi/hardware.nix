@@ -1,5 +1,6 @@
 _: {
   boot = {
+    blacklistedKernelModules = [ "vc4" ];
     kernelModules = [
       "usb_storage"
       "usbhid"
