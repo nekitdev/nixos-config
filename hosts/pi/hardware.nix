@@ -1,17 +1,12 @@
 _: {
   boot = {
-    blacklistedKernelModules = [ "vc4" ];
     kernelModules = [
-      "usb_storage"
-      "usbhid"
-      "xhci_hcd"
-      "xhci_pci"
       "rtw89_8922au_git"
     ];
     extraModprobeConfig = ''
       options rtw89_core disable_ps_mode=y
     '';
-    loader.raspberry-pi.bootloader = "kernelboot-legacy-unsupported";
+    loader.raspberry-pi.bootloader = "kernel";
     initrd.systemd.enable = true;
     zfs.forceImportRoot = false;
   };
