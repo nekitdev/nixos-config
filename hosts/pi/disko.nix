@@ -1,8 +1,8 @@
 _: {
   disko.devices = {
-    disk.main = {
+    disk.card = {
       type = "disk";
-      device = "/dev/nvme0n1";
+      device = "/dev/mmcblk0";
       content = {
         type = "gpt";
         partitions = {
@@ -64,6 +64,15 @@ _: {
               ];
             };
           };
+        };
+      };
+    };
+    disk.main = {
+      type = "disk";
+      device = "/dev/nvme0n1";
+      content = {
+        type = "gpt";
+        partitions = {
           swap = {
             label = "SWAP";
 
