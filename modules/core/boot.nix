@@ -1,17 +1,42 @@
-{ pkgs, currentPi, ... }:
+{
+  config,
+  pkgs,
+  currentPi,
+  ...
+}:
 let
-  kernel = if currentPi then pkgs.linuxPackages_6_18 else pkgs.linuxPackages_latest;
+  rtw89 = config.boot.kernelPackages.callPackage ../../kernel/rtw89.nix { };
+
+  loader =
+    if currentPi then
+      {
+        grub.enable = false;
+        generic-extlinux-compatible.enable = true;
+      }
+    else
+      {
+        systemd-boot.enable = true;
+        efi.canTouchEfiVariables = true;
+      };
 in
 {
-  boot = {
-    kernelPackages = kernel;
+  boot =
+    if currentPi then
+      { }
+    else
+      {
+        binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-    extraModulePackages = [ pkgs.rtw89 ];
+        kernelPackages = pkgs.linuxPackages_latest;
+      }
+      // {
+        inherit loader;
 
-    loader = {
-      # enable systemd-boot on non-pi
-      systemd-boot.enable = !currentPi;
-      efi.canTouchEfiVariables = true;
-    };
-  };
+        extraModulePackages = [ rtw89 ];
+
+        # disable power saving mode for rtw89
+        extraModprobeConfig = ''
+          options rtw89_core_git disable_ps_mode=y
+        '';
+      };
 }

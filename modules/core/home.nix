@@ -17,8 +17,8 @@ let
 
   info = users.current.info;
 
-  niri = if currentPi then inputs.niri-pi else inputs.niri;
-  dms = if currentPi then inputs.dms-pi else inputs.dms;
+  dms = inputs.dms;
+  niri = inputs.niri;
 in
 {
   home-manager = {

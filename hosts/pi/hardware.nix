@@ -1,12 +1,5 @@
 _: {
   boot = {
-    kernelModules = [
-      "rtw89_8922au_git"
-    ];
-    extraModprobeConfig = ''
-      options rtw89_core disable_ps_mode=y
-    '';
-    loader.raspberry-pi.bootloader = "kernel";
     initrd.systemd.enable = true;
     zfs.forceImportRoot = false;
   };

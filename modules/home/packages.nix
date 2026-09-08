@@ -12,6 +12,8 @@ let
     else
       with pkgs;
       [
+        # config
+        yubioath-flutter
         # social
         telegram-desktop
         signal-desktop
@@ -42,8 +44,6 @@ in
   home.packages =
     with pkgs;
     [
-      # config
-      yubioath-flutter
       # development
       capnproto
       capnproto-rust

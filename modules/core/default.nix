@@ -9,6 +9,7 @@ _: {
     ./browsers.nix
     ./cache.nix
     ./cloudflared.nix
+    ./disks.nix
     ./fonts.nix
     ./gpg.nix
     ./greet.nix

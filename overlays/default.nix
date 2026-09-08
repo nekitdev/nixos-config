@@ -3,7 +3,7 @@ let
   pkgs-additions =
     self: _:
     import ../pkgs {
-      inherit pkgs-stable pi;
+      inherit pkgs-stable;
       inherit (self) pkgs;
     };
 

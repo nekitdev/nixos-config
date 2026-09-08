@@ -13,7 +13,6 @@ in
   ];
 
   boot = {
-    binfmt.emulatedSystems = [ "aarch64-linux" ];
     initrd = {
       availableKernelModules = [
         "xhci_pci"
@@ -23,7 +22,6 @@ in
         "nvme"
         "usbhid"
       ];
-      kernelModules = [ ];
     };
 
     kernelModules = [
@@ -33,7 +31,7 @@ in
 
     # disable power saving mode for rtw89
     extraModprobeConfig = ''
-      options rtw89_core disable_ps_mode=y
+      options rtw89_core_git disable_ps_mode=y
     '';
   };
 
