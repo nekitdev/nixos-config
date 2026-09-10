@@ -1,6 +1,42 @@
-_: {
+{ lib, ... }:
+let
+  modules = [
+    "ahci"
+    "ata_piix"
+    "autofs"
+    "clk-rp1"
+    "efivarfs"
+    "ehci_hcd"
+    "ehci_pci"
+    "hid_generic"
+    "hid_logitech_hidpp"
+    "mmc_block"
+    "nvme"
+    "ohci_hcd"
+    "ohci_pci"
+    "pata_marvell"
+    "pcie-brcmstb"
+    "rp1"
+    "sata_nv"
+    "sata_sis"
+    "sata_uli"
+    "sata_via"
+    "sd_mod"
+    "sr_mod"
+    "uhci_hcd"
+    "usb-storage"
+    "usbhid"
+    "vc4"
+    "xhci_hcd"
+    "xhci_pci"
+  ];
+in
+{
   boot = {
-    initrd.systemd.enable = true;
+    initrd = {
+      availableKernelModules = lib.mkForce modules;
+      systemd.enable = true;
+    };
     zfs.forceImportRoot = false;
   };
 

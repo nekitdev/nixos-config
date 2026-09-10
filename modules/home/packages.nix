@@ -24,8 +24,6 @@ let
         # design
         figma-linux
         # development
-        clang
-        clang-tools
         postman
         typst
         tinymist
@@ -43,6 +41,8 @@ in
       # development
       capnproto
       capnproto-rust
+      clang
+      clang-tools
       nixd
       typos
       typos-lsp
