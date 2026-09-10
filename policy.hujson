@@ -6,10 +6,10 @@
             "dst": ["*"],
             "ip": ["*"],
         },
-        // `phone` has access to `main`
+        // `phone` has access to `pi`
         {
             "src": ["tag:phone"],
-            "dst": ["tag:main"],
+            "dst": ["tag:pi"],
             "ip": ["*"],
         },
     ],
@@ -21,11 +21,11 @@
             "dst": ["tag:pi"],
             "users": ["autogroup:nonroot", "root"],
         },
-        // `phone` can `ssh` into `main`
+        // `phone` can `ssh` into `pi`
         {
             "action": "accept",
             "src": ["tag:phone"],
-            "dst": ["tag:main"],
+            "dst": ["tag:pi"],
             "users": ["autogroup:nonroot", "root"],
         },
     ],
