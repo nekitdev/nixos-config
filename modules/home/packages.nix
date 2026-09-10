@@ -1,9 +1,5 @@
 { pkgs, currentPi, ... }:
 let
-  just-unchecked = pkgs.just.overrideAttrs (old: {
-    doCheck = false;
-  });
-
   additional =
     if currentPi then
       [
@@ -51,7 +47,7 @@ in
       typos
       typos-lsp
       taplo
-      just-unchecked
+      just
       uv
       meilisearch
       dioxus-cli

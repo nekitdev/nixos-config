@@ -4,6 +4,11 @@ _: {
     zfs.forceImportRoot = false;
   };
 
+  hardware.raspberry-pi.firmware = {
+    enable = true;
+    uboot.enable = true;
+  };
+
   systemd.services.zfs-mount.enable = false;
 
   # ignore partitions with "required partition" attribute

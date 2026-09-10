@@ -56,7 +56,7 @@ let
   ];
 
   provided = import ../overlays {
-    inherit pkgs-stable pi;
+    inherit pkgs-stable;
   };
 
   overlays = defined ++ builtins.attrValues provided;

@@ -1,19 +1,12 @@
 {
   config,
-  pkgs,
   currentPi,
   ...
 }:
 if currentPi then
-  let
-    unchecked-tuwunel = pkgs.matrix-tuwunel.overrideAttrs (old: {
-      doCheck = false;
-    });
-  in
   {
     services.matrix-tuwunel = {
       enable = true;
-      package = unchecked-tuwunel;
       settings = {
         global = {
           # allow registration with sops-managed token
