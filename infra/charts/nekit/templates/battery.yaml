@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nekit-battery
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nekit-battery
+  template:
+    metadata:
+      labels:
+        app: nekit-battery
+    spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+        - name: nekit-battery
+          image: "{{ .Values.battery.image }}:{{ .Values.battery.tag }}"
+          ports:
+            - containerPort: {{ .Values.battery.port }}
+          env:
+            - name: NEKIT_BATTERY_PORT
+              value: "{{ .Values.battery.port }}"
+            - name: NEKIT_BATTERY_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: nekit-battery-key
+                  key: key  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nekit-battery
+spec:
+  type: NodePort
+  selector:
+    app: nekit-battery
+  ports:
+    - port: {{ .Values.battery.port }}
+      targetPort: {{ .Values.battery.port }}
+      nodePort: {{ .Values.battery.nodePort }}

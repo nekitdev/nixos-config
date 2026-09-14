@@ -1,0 +1,5 @@
+apiVersion: v2
+name: nekit
+description: nekit.dev, serve.nekit.dev and battery.nekit.dev
+version: 0.1.0
+appVersion: "0.1.0"

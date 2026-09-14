@@ -18,6 +18,7 @@ _: {
     ./home.nix
     ./keyboard.nix
     ./keyring.nix
+    ./kubernetes.nix
     ./matrix.nix
     ./network.nix
     ./nh.nix

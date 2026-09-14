@@ -1,0 +1,15 @@
+dev:
+  image: ghcr.io/nekitdev/nekit-dev
+  tag: latest
+  port: 6942
+  nodePort: 30042
+serve:
+  image: ghcr.io/nekitdev/nekit-serve
+  tag: latest
+  port: 6969
+  nodePort: 30069
+battery:
+  image: ghcr.io/nekitdev/nekit-battery
+  tag: latest
+  port: 6913
+  nodePort: 30013

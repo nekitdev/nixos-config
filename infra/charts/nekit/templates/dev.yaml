@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nekit-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nekit-dev
+  template:
+    metadata:
+      labels:
+        app: nekit-dev
+    spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+        - name: nekit-dev
+          image: "{{ .Values.dev.image }}:{{ .Values.dev.tag }}"
+          ports:
+            - containerPort: {{ .Values.dev.port }}
+          env:
+            - name: PORT
+              value: "{{ .Values.dev.port }}"
+            - name: NEKIT_BATTERY_URL
+              value: "http://127.0.0.1:{{ .Values.battery.nodePort }}/"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nekit-dev
+spec:
+  type: NodePort
+  selector:
+    app: nekit-dev
+  ports:
+    - port: {{ .Values.dev.port }}
+      targetPort: {{ .Values.dev.port }}
+      nodePort: {{ .Values.dev.nodePort }}

@@ -29,10 +29,13 @@
         22 # ssh
         80 # http
         443 # https
+        6443 # k3s
         8080 # alternative
       ];
       trustedInterfaces = [
+        "cni0" # k3s
         "virbr0" # virtualization
+        "flannel.1" # k3s
         "wlan1" # wifi
       ];
     };
