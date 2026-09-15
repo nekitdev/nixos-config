@@ -12,8 +12,6 @@ spec:
       labels:
         app: nekit-battery
     spec:
-      hostNetwork: true
-      dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: nekit-battery
           image: "{{ .Values.battery.image }}:{{ .Values.battery.tag }}"
@@ -26,7 +24,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: nekit-battery-key
-                  key: key  
+                  key: key
 ---
 apiVersion: v1
 kind: Service
