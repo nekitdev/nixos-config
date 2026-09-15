@@ -12,8 +12,9 @@ if currentPi then
             "nekit.dev" = "http://127.0.0.1:6942";
             "ssh.nekit.dev" = "ssh://127.0.0.1:22";
             "cache.nekit.dev" = "http://127.0.0.1:5000";
-            "battery.nekit.dev" = "http://127.0.0.1:4269";
-            "dualizzzm.design" = "http://127.0.0.1:6913";
+            "battery.nekit.dev" = "http://127.0.0.1:6913";
+            "serve.nekit.dev" = "http://127.0.0.1:6969";
+            "dualizzzm.design" = "http://127.0.0.1:4269";
             "lyrichar.app" = "http://127.0.0.1:4213";
             "open.lyrichar.app" = "http://127.0.0.1:1369";
             "api.lyrichar.app" = "http://127.0.0.1:1342";
