@@ -12,6 +12,8 @@ spec:
       labels:
         app: nekit-dev
     spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: nekit-dev
           image: "{{ .Values.dev.image }}:{{ .Values.dev.tag }}"
@@ -21,7 +23,7 @@ spec:
             - name: PORT
               value: "{{ .Values.dev.port }}"
             - name: NEKIT_BATTERY_URL
-              value: "http://nekit-battery:{{ .Values.battery.port }}"
+              value: "http://127.0.0.1:{{ .Values.battery.nodePort }}/"
 ---
 apiVersion: v1
 kind: Service

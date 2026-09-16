@@ -12,6 +12,8 @@ spec:
       labels:
         app: nekit-serve
     spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: nekit-serve
           image: "{{ .Values.serve.image }}:{{ .Values.serve.tag }}"
