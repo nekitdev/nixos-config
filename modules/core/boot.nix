@@ -21,22 +21,24 @@ let
 in
 {
   boot =
-    if currentPi then
-      { }
-    else
-      {
-        binfmt.emulatedSystems = [ "aarch64-linux" ];
+    (
+      if currentPi then
+        { }
+      else
+        {
+          binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-        kernelPackages = pkgs.linuxPackages_latest;
-      }
-      // {
-        inherit loader;
+          kernelPackages = pkgs.linuxPackages_latest;
+        }
+    )
+    // {
+      inherit loader;
 
-        extraModulePackages = [ rtw89 ];
+      extraModulePackages = [ rtw89 ];
 
-        # disable power saving mode for rtw89
-        extraModprobeConfig = ''
-          options rtw89_core_git disable_ps_mode=y
-        '';
-      };
+      # disable power saving mode for rtw89
+      extraModprobeConfig = ''
+        options rtw89_core_git disable_ps_mode=y
+      '';
+    };
 }
