@@ -22,7 +22,7 @@ stdenv.mkDerivation {
     owner = "morrownr";
     repo = "rtw89";
     rev = "main";
-    sha256 = "sha256-1fDDjO5zoLnoAFr8ypnIhJrR3qRfd+FA7QaEdLPdM4o=";
+    sha256 = "sha256-ZRoituDx8S6nG5o1zDvWA8yZW8h+7rp/xAIaQj4nb6E=";
   };
 
   nativeBuildInputs = kernel.moduleBuildDependencies;
