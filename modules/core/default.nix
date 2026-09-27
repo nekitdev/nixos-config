@@ -10,6 +10,7 @@ _: {
     ./cache.nix
     ./cloudflared.nix
     ./disks.nix
+    ./files.nix
     ./fonts.nix
     ./gpg.nix
     ./greet.nix
