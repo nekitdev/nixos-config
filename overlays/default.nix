@@ -1,9 +1,8 @@
-{ pkgs-stable, ... }:
+_:
 let
   pkgs-additions =
     self: _:
     import ../pkgs {
-      inherit pkgs-stable;
       inherit (self) pkgs;
     };
 

@@ -55,9 +55,7 @@ let
     rust-overlay.overlays.default
   ];
 
-  provided = import ../overlays {
-    inherit pkgs-stable;
-  };
+  provided = import ../overlays { };
 
   overlays = defined ++ builtins.attrValues provided;
 

@@ -1,4 +1,4 @@
-{ pkgs-stable, ... }:
+{ pkgs, ... }:
 {
-  happ = pkgs-stable.qt6.callPackage ./happ.nix { };
+  happ = pkgs.qt6.callPackage ./happ.nix { };
 }
