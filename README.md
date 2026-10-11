@@ -1,9 +1,8 @@
 # `nixos-config`
 
-[![Check][Badge]][ACtions]
+[![Check][Badge]][Actions]
 
-> *NixOS configuration.*
+> _NixOS configuration._
 
 [Actions]: https://github.com/nekitdev/nixos-config/actions
-
 [Badge]: https://github.com/nekitdev/nixos-config/workflows/check/badge.svg
