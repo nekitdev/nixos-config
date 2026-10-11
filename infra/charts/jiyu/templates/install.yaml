@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jiyu-install
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jiyu-install
+  template:
+    metadata:
+      labels:
+        app: jiyu-install
+    spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+        - name: jiyu-install
+          image: "{{ .Values.install.image }}:{{ .Values.install.tag }}"
+          ports:
+            - containerPort: {{ .Values.install.port }}
+          volumeMounts:
+            - name: static
+              mountPath: /app/static
+              readOnly: true
+          env:
+            - name: JIYU_INSTALL_PORT
+              value: "{{ .Values.install.port }}"
+
+      volumes:
+        - name: static
+          hostPath:
+            path: {{ .Values.install.static }}
+            type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jiyu-install
+spec:
+  type: NodePort
+  selector:
+    app: jiyu-install
+  ports:
+    - port: {{ .Values.install.port }}
+      targetPort: {{ .Values.install.port }}
+      nodePort: {{ .Values.install.nodePort }}

@@ -19,6 +19,8 @@ if currentPi then
             "open.lyrichar.app" = "http://127.0.0.1:1369";
             "api.lyrichar.app" = "http://127.0.0.1:1342";
             "matrix.nekit.dev" = "http://127.0.0.1:6167";
+            "install.jiyu.sh" = "http://127.0.0.1:30113";
+            "jiyu.sh" = "http://127.0.0.1:30142";
           };
 
           default = "http_status:503";

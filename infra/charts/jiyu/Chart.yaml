@@ -1,0 +1,5 @@
+apiVersion: v2
+name: jiyu
+description: jiyu.sh and install.jiyu.sh
+version: 0.1.0
+appVersion: "0.1.0"

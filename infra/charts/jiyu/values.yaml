@@ -1,0 +1,6 @@
+install:
+  image: ghcr.io/jiyu-sh/install
+  tag: latest
+  port: 10946
+  nodePort: 30113
+  static: /var/lib/jiyu-install/static
