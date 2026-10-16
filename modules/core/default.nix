@@ -17,6 +17,7 @@ _: {
     ./happd.nix
     ./hardware.nix
     ./home.nix
+    ./jiyu.nix
     ./keyboard.nix
     ./keyring.nix
     ./kubernetes.nix

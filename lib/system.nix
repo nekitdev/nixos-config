@@ -8,6 +8,7 @@
   sops-nix,
   niri,
   rust-overlay,
+  jiyu,
   # inputs
   inputs,
   ...
@@ -88,6 +89,9 @@ nixosSystem {
 
     # add home-manager
     home-manager.nixosModules.home-manager
+
+    # add jiyu
+    jiyu.nixosModules.jiyu
 
     {
       nixpkgs = {

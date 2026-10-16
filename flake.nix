@@ -71,6 +71,13 @@
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # freedom of managing proxies
+
+    jiyu = {
+      url = "github:jiyu-sh/jiyu";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -83,6 +90,7 @@
       sops-nix,
       niri,
       rust-overlay,
+      jiyu,
       ...
     }@inputs:
     let
@@ -96,6 +104,7 @@
           sops-nix
           niri
           rust-overlay
+          jiyu
           inputs
           ;
       };

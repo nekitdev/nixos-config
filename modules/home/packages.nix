@@ -29,9 +29,6 @@ let
         tinymist
         # java
         jetbrains.idea
-        # microcontrollers
-        kicad-small
-        stlink
       ];
 in
 {
