@@ -12,6 +12,12 @@
             "dst": ["tag:pi"],
             "ip": ["*"],
         },
+        // `node` has access to `pi`
+        {
+            "src": ["tag:node"],
+            "dst": ["tag:pi"],
+            "ip": ["*"],
+        },
     ],
     "ssh": [
         // `main` can `ssh` into `pi`
@@ -33,5 +39,6 @@
         "tag:pi": ["nekitdev@github"],
         "tag:main": ["nekitdev@github"],
         "tag:phone": ["nekitdev@github"],
+        "tag:node": ["nekitdev@github"],
     },
 }
