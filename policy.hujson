@@ -12,10 +12,10 @@
             "dst": ["tag:pi"],
             "ip": ["*"],
         },
-        // `pi` has access to exit nodes
+        // `node` has access to `pi`
         {
-            "src": ["tag:pi"],
-            "dst": ["autogroup:internet"],
+            "src": ["tag:node"],
+            "dst": ["tag:pi"],
             "ip": ["*"],
         },
     ],
