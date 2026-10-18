@@ -18,7 +18,7 @@ if currentPi then
           allow_encryption = true;
           # server setup
           server_name = "nekit.dev";
-          address = [ "127.0.0.1" ];
+          address = [ "0.0.0.0" ];
           port = [ 6167 ];
           well_known = {
             client = "https://nekit.dev";

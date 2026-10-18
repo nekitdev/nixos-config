@@ -8,7 +8,7 @@ _: {
     ./boot.nix
     ./browsers.nix
     ./cache.nix
-    ./cloudflared.nix
+    # ./cloudflared.nix
     ./disks.nix
     ./files.nix
     ./fonts.nix
