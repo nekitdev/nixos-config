@@ -27,6 +27,13 @@
             "dst": ["tag:pi"],
             "users": ["autogroup:nonroot", "root"],
         },
+        // `main` can `ssh` into `node`
+        {
+            "action": "accept",
+            "src": ["tag:main"],
+            "dst": ["tag:node"],
+            "users": ["autogroup:nonroot", "root"],
+        },
         // `phone` can `ssh` into `pi`
         {
             "action": "accept",
