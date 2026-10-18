@@ -12,10 +12,10 @@
             "dst": ["tag:pi"],
             "ip": ["*"],
         },
-        // `node` has access to `pi`
+        // `pi` has access to `node`
         {
-            "src": ["tag:node"],
-            "dst": ["tag:pi"],
+            "src": ["tag:pi"],
+            "dst": ["tag:node"],
             "ip": ["*"],
         },
     ],
