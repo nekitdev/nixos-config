@@ -24,6 +24,15 @@ spec:
               value: "{{ .Values.dev.port }}"
             - name: NEKIT_BATTERY_URL
               value: "http://127.0.0.1:{{ .Values.battery.nodePort }}/"
+          volumeMounts:
+            - name: os-release
+              mountPath: /etc/os-release
+              readOnly: true
+      volumes:
+        - name: os-release
+          hostPath:
+            path: /etc/os-release
+            type: File
 ---
 apiVersion: v1
 kind: Service
