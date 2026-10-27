@@ -11,6 +11,8 @@ else
       libvirtd = {
         enable = true;
 
+        nss.enable = true;
+
         qemu = {
           swtpm.enable = true;
         };
