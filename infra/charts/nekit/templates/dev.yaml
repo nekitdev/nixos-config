@@ -14,6 +14,19 @@ spec:
     spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
+      initContainers:
+        - name: git-sync
+          image: registry.k8s.io/git-sync/git-sync:v4.8.0
+          restartPolicy: Always
+          args:
+            - --repo=https://github.com/nekitdev/blog
+            - --ref=main
+            - --root=/blog/sync
+            - --link=current
+            - --period=60s
+          volumeMounts:
+            - name: blog
+              mountPath: /blog
       containers:
         - name: nekit-dev
           image: "{{ .Values.dev.image }}:{{ .Values.dev.tag }}"
@@ -24,15 +37,22 @@ spec:
               value: "{{ .Values.dev.port }}"
             - name: NEKIT_BATTERY_URL
               value: "http://127.0.0.1:{{ .Values.battery.nodePort }}/"
+            - name: NEKIT_BLOG
+              value: /blog/sync/current
           volumeMounts:
             - name: os-release
               mountPath: /etc/os-release
+              readOnly: true
+            - name: blog
+              mountPath: /blog
               readOnly: true
       volumes:
         - name: os-release
           hostPath:
             path: /etc/os-release
             type: File
+        - name: blog
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
