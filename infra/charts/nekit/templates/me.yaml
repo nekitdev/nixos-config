@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nekit-me
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nekit-me
+  template:
+    metadata:
+      labels:
+        app: nekit-me
+    spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+        - name: nekit-me
+          image: "{{ .Values.me.image }}:{{ .Values.me.tag }}"
+          ports:
+            - containerPort: {{ .Values.me.port }}
+          env:
+            - name: NEKIT_ME_PORT
+              value: "{{ .Values.me.port }}"
+            - name: NEKIT_ME_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: nekit-me-key
+                  key: key
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nekit-me
+spec:
+  type: NodePort
+  selector:
+    app: nekit-me
+  ports:
+    - port: {{ .Values.me.port }}
+      targetPort: {{ .Values.me.port }}
+      nodePort: {{ .Values.me.nodePort }}

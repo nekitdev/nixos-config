@@ -13,3 +13,8 @@ battery:
   tag: latest
   port: 6913
   nodePort: 30013
+me:
+  image: ghcr.io/nekitdev/nekit-me
+  tag: latest
+  port: 6900
+  nodePort: 30000
