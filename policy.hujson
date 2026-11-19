@@ -18,6 +18,12 @@
             "dst": ["tag:pi"],
             "ip": ["*"],
         },
+        // `phone` has access to `node`
+        {
+            "src": ["tag:phone"],
+            "dst": ["tag:node"],
+            "ip": ["*"],
+        },
     ],
     "ssh": [
         // `main` can `ssh` into `pi`
@@ -39,6 +45,13 @@
             "action": "accept",
             "src": ["tag:phone"],
             "dst": ["tag:pi"],
+            "users": ["autogroup:nonroot", "root"],
+        },
+        // `phone` can `ssh` into `node`
+        {
+            "action": "accept",
+            "src": ["tag:phone"],
+            "dst": ["tag:node"],
             "users": ["autogroup:nonroot", "root"],
         },
     ],
