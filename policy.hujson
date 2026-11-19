@@ -24,6 +24,12 @@
             "dst": ["tag:node"],
             "ip": ["*"],
         },
+        // `phone` can use exit nodes
+        {
+            "src": ["tag:phone"],
+            "dst": ["autogroup:internet"],
+            "ip": ["*"],
+        },
     ],
     "ssh": [
         // `main` can `ssh` into `pi`
